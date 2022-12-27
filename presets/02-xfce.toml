@@ -1,0 +1,13 @@
+packages = ["xfce4-appfinder", "xfce4-battery-plugin", "xfce4-clipman-plugin", "xfce4-cpugraph-plugin", "xfce4-diskperf-plugin", "xfce4-genmon-plugin", "xfce4-netload-plugin", "xfce4-notifyd", "xfce4-panel", "xfce4-power-manager", "xfce4-pulseaudio-plugin", "xfce4-screenshooter", "xfce4-sensors-plugin", "xfce4-session", "xfce4-settings", "xfce4-systemload-plugin", "xfce4-taskmanager", "xfce4-terminal", "xfce4-whiskermenu-plugin", "xfdesktop", "network-manager-applet", "pulseaudio", "pavucontrol", "print-manager", "ttf-dejavu", "lightdm-gtk-greeter-settings", "accountsservice"]
+
+script = """
+set -exu
+
+# With xfce4-session installed and the following patch, FAIL to START SESSION issue fixed
+# https://www.freedesktop.org/wiki/Software/LightDM/CommonConfiguration/
+# https://cialu.net/how-to-solve-failed-to-start-session-with-lightdm-and-xfce/
+sed -i 's/(#)user-session=(.*)/user-session=xfce/' /etc/lightdm/lightdm.conf
+sed -i 's/(#)greeter-session=(.*)/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf
+systemctl enable lightdm
+
+"""

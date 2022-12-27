@@ -1,0 +1,6 @@
+packages = ["firefox", "vim", "lsof", "htop", "net-tools", "man", "virt-viewer", "xfce4-artwork"]
+script = """
+set -exu
+
+"""
+

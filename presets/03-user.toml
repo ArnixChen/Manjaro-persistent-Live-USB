@@ -1,0 +1,40 @@
+packages = ["sudo", "xdg-user-dirs"]
+script = """
+set -eux
+
+useradd -m ${ALMA_USER}
+echo ${ALMA_USER}:${ALMA_USER_PASSWORD} | chpasswd ${ALMA_USER}
+usermod -G users,lp,video,network,storage,wheel,audio,sys,power -a ${ALMA_USER}
+echo "%wheel ALL=(ALL) ALL" > /etc/sudoers.d/99_wheel
+
+# Fix /etc folder's permission setting
+chmod 755 /etc
+
+# Fix xdg-user-dirs can't create default folders
+mkdir -p /home/${ALMA_USER}/.config
+cp /etc/xdg/user-dirs.defaults /home/${ALMA_USER}/.config
+mkdir -p /home/${ALMA_USER}/.local/bin
+chown -R ${ALMA_USER}:${ALMA_USER} /home/${ALMA_USER}
+sudo -u ${ALMA_USER} xdg-user-dirs-update
+rm -fv /home/${ALMA_USER}/.config/user-dirs.defaults
+
+# Append .bashrc to source $HOME/.local/bin/bashrc_ext
+echo '[ -e $HOME/.local/bin/bashrc_ext ] && . $HOME/.local/bin/bashrc_ext' >> /home/${ALMA_USER}/.bashrc
+
+# Add bashrc_ext
+cp -fv /shared_dirs/configs/user/bashrc_ext /home/${ALMA_USER}/.local/bin
+chown -R ${ALMA_USER}:${ALMA_USER} /home/${ALMA_USER}
+
+systemctl enable sshd.service
+
+# Move xfce panel position to top
+sed -i 's/\\(<property name="position".*value=\\)\\("p=.*"\\)\\(.*$\\)/\\1"p=6;x=640;y=18"\\3/' /home/${ALMA_USER}/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
+
+# Simplify xfwm4's Window Decoration
+xsettingsPath=/home/${ALMA_USER}/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+
+[ -e $xsettingsPath ] && sed -i 's/\\(^.*"DecorationLayout"\\) \\(type="empty"\\)\\(.*$\\)/\\1 type="string" value=":minimize,maximize,close"\\3/' $xsettingsPath
+"""
+
+shared_directories = ["configs"]
+environment_variables = ["ALMA_USER","ALMA_USER_PASSWORD"]

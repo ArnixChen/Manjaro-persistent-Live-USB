@@ -1,0 +1,7 @@
+packages = ["manjaro-xfce-settings", "manjaro-hello", "manjaro-application-utility", "manjaro-settings-manager-notifier", "manjaro-browser-settings", "manjaro-release", "manjaro-system"]
+
+script = """
+cp /shared_dirs/configs/lightdm/lightdm-gtk-greeter.conf /etc/lightdm
+"""
+
+shared_directories = ["configs"]

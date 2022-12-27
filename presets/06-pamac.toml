@@ -1,0 +1,21 @@
+packages = ["pamac-gtk", "pamac-snap-plugin", "pamac-flatpak-plugin"]
+script = """
+set -exu
+
+# Customize mirror pool by countries
+# https://wiki.manjaro.org/index.php/Pacman-mirrors
+pacman-mirrors --country ${MIRROR_COUNTRY}
+
+# Fix pamac's showing no package available
+# Fix normal user can't do pacman -Q
+# https://bbs.archlinux.org/viewtopic.php?id=208597
+# https://bbs.archlinux.org/viewtopic.php?id=246415
+chmod 755 /var/lib/pacman/local
+chmod 644 /var/lib/pacman/local/ALPM_DB_VERSION
+
+systemctl enable apparmor
+systemctl enable snapd.apparmor
+systemctl enable snapd
+"""
+
+environment_variables = ["MIRROR_COUNTRY"]

@@ -1,0 +1,1 @@
+packages = ["xf86-input-elographics", "xf86-input-libinput", "xorg-server", "xorg-server-common", "xorg-mkfontscale", "xorg-xhost", "xorg-xkill", "xorg-xsetroot", "xterm", "xfwm4", "xsel", "xclip"]

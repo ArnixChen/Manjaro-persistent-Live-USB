@@ -1,0 +1,42 @@
+##
+##Bashrc extensions
+##
+
+# Set command for every time a command prompt is up -- Terminal title
+PROMPT_COMMAND='echo -ne "\033]0;${TERM_TITLE}  :  ${BUILD_ENV}  :  $(pwd)\007"'
+
+# Set command prompt format
+PS1='[\u@\h \W]$ '
+PS2='> '
+PS4='+ '
+umask 0027
+
+# Show date time on history
+export HISTTIMEFORMAT="%d/%m/%y %T "
+
+# Assign default editor
+export EDITOR=vim
+
+# For xpra ibus support
+# https://www.xpra.org/trac/ticket/634
+# http://lists.devloop.org.uk/pipermail/shifter-users/2014-August/000915.html
+export DISABLE_IMSETTINGS=0
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS="@im=ibus"
+
+# For Enable XFCE System Sounds
+export GTK_MODULES=canberra-gtk-module
+
+alias reload_bashrc='. $HOME/.local/bin/bashrc_ext'
+
+# play audio file
+alias play='/usr/bin/gst-play-1.0 -q'
+
+# dmesg
+alias dmesg='sudo dmesg -e | /usr/bin/grep -E -v audit'
+
+# Base16 for Shells
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+

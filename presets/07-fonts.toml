@@ -1,0 +1,9 @@
+packages = ["adobe-source-han-sans-cn-fonts", "adobe-source-sans-fonts", "nerd-fonts-noto-sans-mono", "gsfonts"]
+script = """
+set -exu
+
+#systemctl enable apparmor
+#systemctl enable snapd.apparmor
+#systemctl enable snapd
+"""
+

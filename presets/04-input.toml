@@ -1,0 +1,11 @@
+packages = ["ibus", "ibus-chewing", "ibus-rime"]
+
+script = """
+ls /shared_dirs/configs
+cp -fv /shared_dirs/configs/user/xprofile /home/${ALMA_USER}/.xprofile
+
+chown -R ${ALMA_USER}:${ALMA_USER} /home/${ALMA_USER}
+"""
+
+shared_directories = ["configs"]
+environment_variables = ["ALMA_USER"]
