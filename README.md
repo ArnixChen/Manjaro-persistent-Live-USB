@@ -26,7 +26,7 @@ sudo pacman -S virt-viewer
 #### 1. Enter the cloned folder and edit buidIMG.sh script to customize the settings to fit your needs.
 ```
 userName="test"
-password="@123456"
+password="abcdefgh"
 
 imgFileSize="12GiB"
 imgFileName="alma-xfce-manjaro.img"
