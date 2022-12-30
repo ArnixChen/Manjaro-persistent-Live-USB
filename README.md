@@ -3,50 +3,51 @@ Scripts and presets for building your own Manjaro persistent Live USB with ALMA.
 
 ## Usage
 ### Installation
-  1. Install [ALMA](https://github.com/r-darwish/topgrade/)(Arch Linux Mobile Appliance).
-  This can be done by installing the `alma-git` package with pacman. (Or install  alma (AUR package) with pamac)
-  ``` shell
-  sudo pacman -S alma-git
-  ```
-  2. Install QEMU(for testing the live USB image).
-  ``` shell
-  sudo pacman -S qemu-base
-  ```
+1. Install [ALMA](https://github.com/r-darwish/topgrade/)(Arch Linux Mobile Appliance).
+This can be done by installing the `alma-git` package with pacman. (Or install  alma (AUR package) with pamac)
+``` shell
+sudo pacman -S alma-git
+```
+2. Install QEMU(for testing the live USB image).
+``` shell
+sudo pacman -S qemu-base
+```
   
-  3. Install a VNC Client(for testing the live USB image). Here I use virt-viewer, you can choose whatever you like.
-  ``` shell
-  sudo pacman -S virt-viewer
-  ```
-  4. Clone this github repository.
-  ``` shell
-  git clone https://github.com/ArnixChen/Manjaro-persistent-Live-USB-with-ALMA.git
-  ```
+3. Install a VNC Client(for testing the live USB image). Here I use virt-viewer, you can choose whatever you like.
+``` shell
+sudo pacman -S virt-viewer
+```
+4. Clone this github repository.
+``` shell
+git clone https://github.com/ArnixChen/Manjaro-persistent-Live-USB-with-ALMA.git
+```
 ### Build Manjaro persistent live usb image
-  1. Edit buidIMG.sh script to customize the settings to fit your needs.
-  2. Execute buildIMG.sh
-  ``` shell
-  ./buildIMG.sh
-  ```
+1. Edit buidIMG.sh script to customize the settings to fit your needs.
+2. Execute buildIMG.sh
+``` shell
+./buildIMG.sh
+```
   
 ### Test the newly created image
-  1. Boot the newly created image with QEMU.
-  ``` shell
-  ./startQemu.sh
-  ```
-  2. Launch virt-viewer(Remote Viewer) and give the connection Address.
-  ```
-  vnc://127.0.0.1:5900
-  ```
-  Then you can login with your customized username and password in buildIMG.sh.
-  3. After shuting down the virtual machine of live USB.
-  Don't forget to switch back the xterminal where you execute ./startQemu.sh and type your password to complete the
-  loopback device detach process.
+1. Boot the newly created image with QEMU.
+``` shell
+./startQemu.sh
+```
+2. Launch virt-viewer(Remote Viewer) and give the connection Address.
+```
+vnc://127.0.0.1:5900
+```
+Then you can login with your customized username and password in buildIMG.sh.
+3. After shuting down the virtual machine of live USB.
+Don't forget to switch back the xterminal where you execute ./startQemu.sh and type your password to complete the
+loopback device detach process.
   
 ### Copy the live USB image into your USB stick.
-  1. Confirm the correct device name of USB stick.
+1. Confirm the correct device name of USB stick.
 To avoid accidently damage your harddisk, you should reconfirm the device name of your USB stick.
 You can use command lsblk twice to compare the list before insert USB stick and after.
-```lsblk
+```
+lsblk
 ```
   2. Image copying. (You can use other similar utility like dd_rescue)
 ```
@@ -88,6 +89,11 @@ UUID=6bd4baad-7c50-4b7b-8acd-2027e28c61ab	/         	ext4      	rw,noatime	0 1
 UUID=5d070e0d-1a90-4ebf-b380-b360139c79bb	/home         	ext4      	rw,noatime	0 1
 
 UUID=3372-353D      	/boot     	vfat      	rw,noatime,fmask=0027,dmask=0027,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+```
+8. Unmount all previous manually mounted USB stick partitions.
+``` shell
+sudo umount /dev/sdc3
+sudo umount /dev/sdc4
 ```
 
 
