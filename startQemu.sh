@@ -1,6 +1,6 @@
 #!/bin/bash
 
-imgFileName=$(cat buildIMG.sh | /usr/bin/grep ^imgFileName | cut -d '=' -f 2)
+imgFileName=$(cat buildIMG.sh | /usr/bin/grep ^imgFileName | cut -d '=' -f 2 | sed -e 's/"//g')
 
 sudo losetup -f $imgFileName
 loopbackDev=$(sudo losetup -j $imgFileName| cut -d ':' -f 1)
