@@ -1,5 +1,5 @@
 # Manjaro persistent Live USB
-Scripts and presets for building your own Manjaro persistent Live USB with ALMA.
+Scripts and presets for building your own Manjaro persistent Live USB with [ALMA](https://github.com/r-darwish/topgrade/).
 
 ## Usage
 ### Installation
@@ -69,7 +69,8 @@ sudo dd if=alma-xfce-manjaro.img of=<device file name of USB stick>
 sudo dd if=alma-xfce-manjaro.img of=/dev/sdc
 ```
 
-### If you like, your can move /home folder into a separate partition and make it to occupy the rest space of live USB stick.
+### Optional, Make the rest space of live USB stick as storage.
+If you like, your can move /home folder into a separate partition and make it to occupy the rest space of live USB stick.
 #### 1. Insert live USB stick which have done the image copying step to your PC.
 #### 2. Create new partition which occupies the rest space of live USB stick with gparted. And label it as HOME.
 #### 3. Mount live USB stick.
