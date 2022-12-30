@@ -7,6 +7,6 @@ loopbackDev=$(sudo losetup -j $imgFileName| cut -d ':' -f 1)
 
 [ -n $loopbackDev ] && {
 	sudo alma qemu $loopbackDev
-	echo Enter password to remove loopback device for ALMA
+	echo Enter password to detach $imgFileName from loopback device
 	sudo losetup -d $loopbackDev
 }
