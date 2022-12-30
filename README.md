@@ -60,7 +60,7 @@ You can use command lsblk twice to compare the list before insert USB stick and 
 lsblk
 ```
 #### 2. Image copying. 
-You can dd or more fancy utility like dd_rescue alternatively.
+You can use dd or more fancy utility like dd_rescue alternatively.
 ```
 sudo dd if=alma-xfce-manjaro.img of=<device file name of USB stick>
 ```
