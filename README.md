@@ -55,7 +55,7 @@ loopback device detach process.
 ### Copy the live USB image into your USB stick.
 #### 1. Confirm the correct device name of USB stick.
 To avoid accidently damage your harddisk, you should reconfirm the device name of your USB stick.
-You can use command lsblk twice to compare the list before insert USB stick and after.
+You can use command lsblk twice to compare the outputs before inserting USB stick and after.
 ```
 lsblk
 ```
