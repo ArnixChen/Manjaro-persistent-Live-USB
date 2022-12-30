@@ -1,7 +1,7 @@
 #!/bin/bash
 
 userName="test"
-password="@123456"
+password="abcdefgh"
 
 imgFileSize="12GiB"
 imgFileName="alma-xfce-manjaro.img"
