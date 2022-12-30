@@ -35,6 +35,7 @@ mirrorCountry="Taiwan"
 ```
 #### 2. Execute buildIMG.sh
 ``` shell
+chmod u+x *.sh
 ./buildIMG.sh
 ```
   
