@@ -89,7 +89,7 @@ sudo blkid /dev/sdc4
 ```
 #### 6. Copy all contents in live USB stick's /home folder into ./mnt
 ``` shell
-sudo cp -av usbstick/home ./mnt
+sudo cp -av usbstick/home/* ./mnt
 ```
 #### 7. Modify /etc/fstab to make OS to mount newly created HOME partition to /home.
 ```
