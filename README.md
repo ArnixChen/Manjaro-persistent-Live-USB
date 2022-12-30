@@ -43,7 +43,7 @@ mirrorCountry="Taiwan"
 ``` shell
 ./startQemu.sh
 ```
-#### 2. Launch virt-viewer(Remote Viewer) and give the connection Address.
+#### 2. Launch virt-viewer(Remote Viewer) and give it with following connection address.
 ```
 vnc://127.0.0.1:5900
 ```
