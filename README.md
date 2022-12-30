@@ -47,7 +47,7 @@ mirrorCountry="Taiwan"
 ```
 vnc://127.0.0.1:5900
 ```
-Then you can login with your customized username and password stated in buildIMG.sh.
+Then you can login with your customized username and password which stated in buildIMG.sh.
 #### 3. After shuting down the virtual machine of live USB.
 Don't forget to switch back the xterminal where you execute ./startQemu.sh and type your password to complete the
 loopback device detach process.
