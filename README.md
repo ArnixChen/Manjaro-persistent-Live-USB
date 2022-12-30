@@ -104,8 +104,8 @@ UUID=3372-353D      	/boot     	vfat      	rw,noatime,fmask=0027,dmask=0027,code
 ```
 #### 8. Unmount all manually mounted partitions on  live USB stick.
 ``` shell
-sudo umount /dev/sdc3
-sudo umount /dev/sdc4
+sudo umount usbstick
+sudo umount mnt
 ```
 
 
