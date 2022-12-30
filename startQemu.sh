@@ -1,9 +1,9 @@
 #!/bin/bash
 
-img=alma-xfce-manjaro.img
+imgFileName=$(cat buildIMG.sh | /usr/bin/grep ^imgFileName | cut -d '=' -f 2)
 
-sudo losetup -f $img
-loopbackDev=$(sudo losetup -j $img| cut -d ':' -f 1)
+sudo losetup -f $imgFileName
+loopbackDev=$(sudo losetup -j $imgFileName| cut -d ':' -f 1)
 
 [ -n $loopbackDev ] && {
 	sudo alma qemu $loopbackDev
