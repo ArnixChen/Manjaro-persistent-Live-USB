@@ -85,7 +85,17 @@ sudo mount /dev/sdc4 ./mnt
 ```
 ### 5. Get the UUID of newly created HOME partiton.
 ``` shell
-sudo blkid /dev/sdc4
+sudo blkid <your newly created HOME partition device name>
+```
+ex.
+``` shell
+$ 
+$ sudo blkid /dev/sdc4
+/dev/sdc4: LABEL="HOME" UUID="5d070e0d-1a90-4ebf-b380-b360139c79bb" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="16f4a4ca-986b-4779-b310-9ff57ce98776"
+```
+and here is the UUID we need. 
+```
+UUID="5d070e0d-1a90-4ebf-b380-b360139c79bb"
 ```
 ### 6. Copy all contents in live USB stick's /home folder into ./mnt
 ``` shell
